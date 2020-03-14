@@ -4,12 +4,24 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/spf13/viper"
 	"go-urlshortener/model"
 	"time"
 )
 
 type MysqlDatabase struct {
 	Mysql *sql.DB
+}
+
+func CreateDatabaseConnection() Database {
+	db, _ := CreateMySQLDatabase(
+		viper.GetString("mysql.user"),
+		viper.GetString("mysql.password"),
+		viper.GetString("mysql.host"),
+		viper.GetUint32("mysql.port"),
+		viper.GetString("mysql.db"),
+	)
+	return &MysqlDatabase{Mysql: db}
 }
 
 func CreateMySQLDatabase(user string, password string, server string, port uint32, dbName string) (*sql.DB, error) {
@@ -45,6 +57,22 @@ func (dao *MysqlShortUrlDAO) Add(url model.ShortURL) error {
 }
 
 func (dao *MysqlShortUrlDAO) Get(shortURLCode string) (*model.ShortURL, error) {
-	// TODO Implement
-	return nil, fmt.Errorf("not implemented")
+	sql := fmt.Sprintf("SELECT id, long_url FROM short_url WHERE short_key = '%s'", shortURLCode)
+	result, err := dao.DB.Query(sql)
+	if err != nil {
+		// TODO Log error
+		return nil, fmt.Errorf("Could not retrieve short URL.")
+	}
+	defer result.Close()
+	var longUrl string
+	var id int64
+	if result.Next() {
+		err := result.Scan(&id, &longUrl)
+		fmt.Println(err)
+	}
+	return &model.ShortURL{
+		ID:           id,
+		ShortURLCode: shortURLCode,
+		LongURL:      longUrl,
+	}, nil
 }

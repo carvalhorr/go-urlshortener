@@ -1,15 +1,13 @@
 package main
 
-import (
-	"go-urlshortener/persistence"
-)
+import "go-urlshortener/persistence"
 
-type urlShortener struct {
+type shortUrlQuery struct {
 	shortUrlDao persistence.ShortUrlDAO
 }
 
-func createUrlShortener() urlShortener {
-	return urlShortener{
+func createShortUrlQuery() shortUrlQuery {
+	return shortUrlQuery{
 		shortUrlDao: &persistence.MysqlShortUrlDAO{DB: persistence.CreateDatabaseConnection()},
 	}
 }

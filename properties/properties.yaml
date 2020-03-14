@@ -1,0 +1,6 @@
+mysql:
+  host: 35.242.129.29
+  port: 3306
+  user: root
+  password: Iamtheman41233
+  db: urlshortener

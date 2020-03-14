@@ -5,16 +5,11 @@ import (
 	"github.com/mattheath/base62"
 	"go-urlshortener/common"
 	"go-urlshortener/model"
-	"go-urlshortener/persistence"
 	"log"
 	"net/http"
 )
 
 var counter = int64(1)
-
-type urlShortener struct {
-	shortUrlDao persistence.ShortUrlDAO
-}
 
 func main() {
 	err := common.ConfigViper("dev", "./properties")
