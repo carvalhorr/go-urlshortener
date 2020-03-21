@@ -3,9 +3,9 @@ package persistence
 import (
 	"database/sql"
 	"fmt"
+	"github.com/carvalhorr/go-urlshortener/model"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/spf13/viper"
-	"go-urlshortener/model"
 	"time"
 )
 

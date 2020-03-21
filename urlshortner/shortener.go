@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/carvalhorr/go-urlshortener/common"
+	"github.com/carvalhorr/go-urlshortener/model"
 	"github.com/mattheath/base62"
-	"go-urlshortener/common"
-	"go-urlshortener/model"
 	"log"
 	"net/http"
 )

@@ -1,6 +1,6 @@
 package main
 
-import "go-urlshortener/persistence"
+import "github.com/carvalhorr/go-urlshortener/persistence"
 
 type shortUrlQuery struct {
 	shortUrlDao persistence.ShortUrlDAO

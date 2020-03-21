@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go-urlshortener/common"
+	"github.com/carvalhorr/go-urlshortener/common"
 	"log"
 	"net/http"
 	"strings"

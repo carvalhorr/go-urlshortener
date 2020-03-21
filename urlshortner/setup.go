@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go-urlshortener/persistence"
+	"github.com/carvalhorr/go-urlshortener/persistence"
 )
 
 type urlShortener struct {

@@ -2,7 +2,7 @@ package persistence
 
 import (
 	"database/sql"
-	"go-urlshortener/model"
+	"github.com/carvalhorr/go-urlshortener/model"
 )
 
 type ShortUrlDAO interface {
