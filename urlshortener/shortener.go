@@ -12,7 +12,7 @@ import (
 var counter = int64(1)
 
 func main() {
-	err := common.ConfigViper("dev", "./properties")
+	err := common.ConfigViper("dev", "../properties")
 	if err != nil {
 		panic(err)
 	}
